@@ -2,26 +2,39 @@
 
 Latest Firehose loader for the Samsung Galaxy S23 Ultra (SM-S918B), BIT A / U10, One UI 9.
 
-## Setup
+## Install on Arch Linux
 
-On Arch Linux, run the setup script from the project folder.
+Run these commands from the project folder. The first installs the dependencies. The second builds QDL 2.9.1 and installs its USB access rule.
 
 ```sh
+sudo pacman -S --needed gcc pkgconf git meson ninja libusb libxml2 usbutils
 ./setup.sh
 ```
 
-## Use
+## How to use
 
-Connect the phone in EDL mode over USB and check the connection.
+Connect one SM-S918B in EDL mode over USB and check the connection.
 
 ```sh
 ./firehose.sh check
 ```
 
-Save a verified copy of `init_boot.img` in `backups/`.
+### Read `init_boot`
+
+Save a verified copy. The command prints the backup path.
 
 ```sh
 ./firehose.sh backup-init-boot
+```
+
+### Write `init_boot`
+
+To restore `init_boot`, replace `YOUR-BACKUP` with the backup folder from this phone and firmware.
+
+```sh
+.tools/qdl --backend=usb --storage=ufs --skip-reset \
+  loader/sm-s918b-bit-a-firehose.elf \
+  write 0/init_boot "backups/YOUR-BACKUP/init_boot.img"
 ```
 
 ## License
