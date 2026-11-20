@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/firehose-penguin.png" alt="Firehose Loader EDL Penguin Breakout" width="380">
+</p>
+
 # Galaxy S23 Ultra Firehose Loader (SM-S918B)
 
 Latest Firehose loader for the Samsung Galaxy S23 Ultra (SM-S918B), BIT A / U10, One UI 9.
