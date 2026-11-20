@@ -44,3 +44,16 @@ To restore `init_boot`, replace `YOUR-BACKUP` with the backup folder from this p
 ## License
 
 The scripts and this README use the [MIT License](LICENSE). The bundled Firehose loader is third-party firmware.
+
+## 🇧🇷 É Brazuca também?
+
+Deixe um apoio usando Pix.
+
+Sua ajuda motiva expandir esse trabalho pra novos devices e é um jeito de
+agradecer pelas noites sem dormir por trás desse port.
+
+**Chave Pix:** `de68ce24-a653-4094-9f5c-1504917d14ea`
+
+<p align="center">
+  <img src="assets/pix-apoia-o-brazuca.png" alt="QR Code Pix para apoiar o projeto" width="220">
+</p>
