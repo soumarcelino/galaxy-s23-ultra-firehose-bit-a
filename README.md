@@ -1,6 +1,6 @@
-# Galaxy S23 Ultra Firehose Loader
+# Galaxy S23 Ultra Firehose Loader (SM-S918B)
 
-Firehose loader for the **Samsung Galaxy S23 Ultra (SM-S918B), BIT A / U10, One UI 9**. Tested in November 2026.
+Latest Firehose loader for the Samsung Galaxy S23 Ultra (SM-S918B), BIT A / U10, One UI 9.
 
 ## Setup
 
@@ -24,4 +24,6 @@ Save a verified copy of `init_boot.img` in `backups/`.
 ./firehose.sh backup-init-boot
 ```
 
-#GalaxyS23Ultra #SMS918B #BitA #U10 #OneUI9 #Firehose #QualcommEDL
+## License
+
+The scripts and this README use the [MIT License](LICENSE). The bundled Firehose loader is third-party firmware.
