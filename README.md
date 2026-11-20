@@ -41,10 +41,6 @@ To restore `init_boot`, replace `YOUR-BACKUP` with the backup folder from this p
   write 0/init_boot "backups/YOUR-BACKUP/init_boot.img"
 ```
 
-## License
-
-The scripts and this README use the [MIT License](LICENSE). The bundled Firehose loader is third-party firmware.
-
 ## 🇧🇷 É Brazuca também?
 
 Deixe um apoio usando Pix.
@@ -57,3 +53,7 @@ agradecer pelas noites sem dormir por trás desse port.
 <p align="center">
   <img src="assets/pix-apoia-o-brazuca.png" alt="QR Code Pix para apoiar o projeto" width="220">
 </p>
+
+## License
+
+The scripts and this README use the [MIT License](LICENSE). The bundled Firehose loader is third-party firmware.
