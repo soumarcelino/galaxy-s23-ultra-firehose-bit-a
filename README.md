@@ -74,9 +74,6 @@ The release includes the loader and ten signed firmware images from this backup.
 
 Deixe um apoio usando Pix.
 
-Sua ajuda motiva expandir esse trabalho pra novos devices e é um jeito de
-agradecer pelas noites sem dormir por trás desse port.
-
 **Chave Pix:** `de68ce24-a653-4094-9f5c-1504917d14ea`
 
 <p align="center">
