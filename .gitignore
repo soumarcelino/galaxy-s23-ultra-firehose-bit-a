@@ -1,2 +1,6 @@
 .tools/
 backups/
+*.img
+lun*-primary.bin
+lun*-secondary.bin
+verified.json

@@ -2,7 +2,7 @@
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-packages=(gcc pkgconf git meson ninja libusb libxml2 usbutils)
+packages=(gcc pkgconf git meson ninja libusb libxml2 usbutils python)
 if ! pacman -T "${packages[@]}" >/dev/null; then
     sudo pacman -S --needed "${packages[@]}"
 fi

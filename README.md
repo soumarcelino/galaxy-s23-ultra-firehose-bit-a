@@ -11,7 +11,7 @@ Latest Firehose loader for the Samsung Galaxy S23 Ultra (SM-S918B), BIT A / U10,
 Run these commands from the project folder. The first installs the dependencies. The second builds QDL 2.9.1 and installs its USB access rule.
 
 ```sh
-sudo pacman -S --needed gcc pkgconf git meson ninja libusb libxml2 usbutils
+sudo pacman -S --needed gcc pkgconf git meson ninja libusb libxml2 usbutils python
 ./setup.sh
 ```
 
@@ -23,23 +23,36 @@ Connect one SM-S918B in EDL mode over USB and check the connection.
 ./firehose.sh check
 ```
 
-### Read `init_boot`
+### Back up firmware
 
-Save a verified copy. The command prints the backup path.
+The 256 GB partition map covers 99 physical partitions across six UFS logical units. The backup reads 38 firmware partitions up to 1 GB each (1,000,000,000 bytes). It skips device-specific data, `userdata`, `system`, `super` and every partition inside `super`.
 
-```sh
-./firehose.sh backup-init-boot
-```
-
-### Write `init_boot`
-
-To restore `init_boot`, replace `YOUR-BACKUP` with the backup folder from this phone and firmware.
+Choose a new backup folder. The second command verifies the images and lists their positions and sizes.
 
 ```sh
-.tools/qdl --backend=usb --storage=ufs --skip-reset \
-  loader/sm-s918b-bit-a-firehose.elf \
-  write 0/init_boot "backups/YOUR-BACKUP/init_boot.img"
+python3 partitions.py backup backups/my-s23
+python3 partitions.py plan backups/my-s23
 ```
+
+For a quick copy of `init_boot` alone, run `./firehose.sh backup-init-boot`.
+
+### Rebuild or restore
+
+Rebuild six sparse disk images on the PC from the saved partition tables and firmware. Omitted partitions occupy empty ranges. The command asks you to type `REBUILD SM-S918B`.
+
+```sh
+python3 partitions.py rebuild backups/my-s23 rebuilt-disks
+```
+
+To restore one partition on the phone, use its name from the plan. Use `ALL` for the full firmware selection. The script checks the connected phone’s partition tables, lists the changes and requires typed confirmation before writing.
+
+```sh
+python3 partitions.py restore backups/my-s23 init_boot
+```
+
+### Downloads and partition maps
+
+The release includes the loader and ten signed firmware images from this backup. The maps list partition names, sizes and offsets. [Release downloads](https://github.com/soumarcelino/galaxy-s23-ultra-firehose-bit-a/releases/tag/2026.11) · [Physical partitions](partitions/physical.csv) · [Logical partitions inside `super`](partitions/logical.csv)
 
 ## 🇧🇷 É Brazuca também?
 
