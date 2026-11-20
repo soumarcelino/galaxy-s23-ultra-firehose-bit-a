@@ -50,6 +50,22 @@ To restore one partition on the phone, use its name from the plan. Use `ALL` for
 python3 partitions.py restore backups/my-s23 init_boot
 ```
 
+### Restore an image from the release
+
+Download `sm-s918b-bit-a-firmware-backup.zip` from the release. It contains ten signed firmware images, five partitions verified to contain only zero bytes, and both partition maps. The five empty images record the state of the source phone.
+
+Use the original backup folder from your phone for its partition tables and verification record. To recover a missing `init_boot.img`, run these commands from the project folder with the ZIP in your Downloads directory.
+
+```sh
+sudo pacman -S --needed unzip zstd
+unzip -n ~/Downloads/sm-s918b-bit-a-firmware-backup.zip -d backups/release
+( set -C; zstd -dc backups/release/init_boot.img.zst > backups/my-s23/images/init_boot.img )
+python3 partitions.py plan backups/my-s23
+python3 partitions.py restore backups/my-s23 init_boot
+```
+
+The plan verifies the recovered image against your original backup. If the phone already matches, the script finishes immediately. If a write is needed, review the partition name and type `RESTORE SM-S918B init_boot`. The script checks the result after an accepted write. Hardware testing covered reading and offline reconstruction.
+
 ### Downloads and partition maps
 
 The release includes the loader and ten signed firmware images from this backup. The maps list partition names, sizes and offsets. [Release downloads](https://github.com/soumarcelino/galaxy-s23-ultra-firehose-bit-a/releases/tag/2026.11) · [Physical partitions](partitions/physical.csv) · [Logical partitions inside `super`](partitions/logical.csv)
